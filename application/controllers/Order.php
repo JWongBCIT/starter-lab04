@@ -93,6 +93,8 @@ class Order extends Application {
             $item->code = $menuitem->name;
         }
         $this->data['items'] = $items;
+        //Check if order is valid and disable process btn if not
+        $this->data['okornot'] = $this->orders->validate($order_num) ? "" : "disabled";
         $this->render();
     }
 
